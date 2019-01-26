@@ -15,16 +15,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Debug.Log("StartRun");
-            animator.SetTrigger("StartRun");
-        }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            Debug.Log("StopRun");
-            animator.SetTrigger("StopRun");
-        }
+        UpdatePosition();
+    }
+
+    private void UpdatePosition()
+    {
         if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && (position == PositionState.Center || position == PositionState.Right))
         {
             position = position == PositionState.Center ? PositionState.Left : PositionState.Center;
@@ -34,6 +29,15 @@ public class PlayerController : MonoBehaviour
         {
             position = position == PositionState.Center ? PositionState.Right : PositionState.Center;
             transform.position = new Vector2(transform.position.x + positionDelta, transform.position.y);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            //TODO: End Game
+
         }
     }
 }
