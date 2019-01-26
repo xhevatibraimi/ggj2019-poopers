@@ -1,4 +1,5 @@
 ﻿using Assets;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,29 +15,53 @@ public class SceneController : MonoBehaviour
     public float ObstacleGenerationPositionY;
     public float ObstacleGenerationTimeOffset;
     public float ObstacleGenerationRepeatRate;
+    public float ObstacleLowerBound;
+
     public GameObject Obstacle1;
     public GameObject Obstacle2;
     public GameObject Obstacle3;
     public GameObject Collectable;
     private GameObject ObstaclesObject;
-    void Start()
+
+    private void Start()
     {
-        ObstaclesObject = GameObject.FindGameObjectWithTag(Tags.Obstacle);
+        ObstaclesObject = GameObject.FindGameObjectWithTag(Tags.Floor);
         Obstacles.Add(Obstacle1);
         Obstacles.Add(Obstacle2);
         Obstacles.Add(Obstacle3);
-        InvokeRepeating("GenerateElements", ObstacleGenerationTimeOffset, ObstacleGenerationRepeatRate);
+        InvokeRepeating("GenerateCollidables", ObstacleGenerationTimeOffset, ObstacleGenerationRepeatRate);
     }
 
-    private void GenerateElements()
+    private void Update()
+    {
+        DestroyUnncessaryCollidables();
+    }
+
+    private void DestroyUnncessaryCollidables()
+    {
+        var collidables = GameObject.FindGameObjectsWithTag(Tags.Collidable);
+        foreach (var collidable in collidables)
+        {
+            if(collidable.transform.position.y < ObstacleLowerBound)
+            {
+                Destroy(collidable);
+            }
+        }
+    }
+
+    private void GenerateCollidables()
     {
         var elements = GenerateObstacles().Take(random.Next(0, 3)).ToList();
-        elements.Add(Instantiate(Collectable));
-        elements = elements.OrderBy(x => System.Guid.NewGuid().ToString()).ToList();
+        elements.AddRange(GenerateCollectables().Take(3 - elements.Count).ToList());
+        elements = elements.OrderBy(x => Guid.NewGuid().ToString()).ToList();
         elements[0].transform.position = new Vector2(LeftLanePositionX, ObstacleGenerationPositionY);
         elements[1].transform.position = new Vector2(CenterLaneLocationX, ObstacleGenerationPositionY);
         elements[2].transform.position = new Vector2(RightLaneLocationX, ObstacleGenerationPositionY);
-        elements.ForEach(obj => obj.transform.parent = ObstaclesObject.transform.parent);
+        elements.ForEach(obj =>
+        {
+            obj.transform.parent = ObstaclesObject.transform;
+            obj.tag = Tags.Collidable;
+        });
     }
 
     private IEnumerable<GameObject> GenerateObstacles()
@@ -44,6 +69,14 @@ public class SceneController : MonoBehaviour
         while (true)
         {
             yield return Instantiate(GetRandomObstacle());
+        }
+    }
+
+    private IEnumerable<GameObject> GenerateCollectables()
+    {
+        while (true)
+        {
+            yield return Instantiate(Collectable);
         }
     }
 

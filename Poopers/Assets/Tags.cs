@@ -2,6 +2,8 @@
 {
     public static class Tags
     {
-        public const string Obstacle = "Obstacle";
+        public const string Obstacles = "Obstacles";
+        public const string Floor = "Floor";
+        public const string Collidable = "Collidable";
     }
 }

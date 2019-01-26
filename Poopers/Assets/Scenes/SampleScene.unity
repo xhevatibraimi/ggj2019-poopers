@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 1386497813}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -482,10 +482,12 @@ MonoBehaviour:
   ObstacleGenerationPositionY: 0
   ObstacleGenerationTimeOffset: 0
   ObstacleGenerationRepeatRate: 1
-  Obstacle1: {fileID: 0}
-  Obstacle2: {fileID: 0}
-  Obstacle3: {fileID: 0}
-  Collectable: {fileID: 0}
+  ObstacleLowerBound: -6
+  Obstacle1: {fileID: 1207302899978690, guid: 4529214d6a8c4e44ea8fb6764554502b, type: 2}
+  Obstacle2: {fileID: 1046057161621764, guid: 04e6603ccc91e694598e0510c2bc276d, type: 2}
+  Obstacle3: {fileID: 1668660922153890, guid: 92aa7d0d4ce038a4b9750b48e98da404, type: 2}
+  Collectable: {fileID: 1022508231982382, guid: fbaf00fad84a04a4c9abe97fc346e1e8,
+    type: 2}
 --- !u!4 &2029415593
 Transform:
   m_ObjectHideFlags: 0
