@@ -9,6 +9,10 @@ public class SceneController : MonoBehaviour
 {
     private readonly System.Random random = new System.Random();
     private readonly List<GameObject> Obstacles = new List<GameObject>();
+    private GameObject ObstaclesObject;
+    private GameObject Player;
+
+    public static GameManager GameManager = new GameManager();
     public float LeftLanePositionX;
     public float CenterLaneLocationX;
     public float RightLaneLocationX;
@@ -22,11 +26,11 @@ public class SceneController : MonoBehaviour
     public GameObject Obstacle2;
     public GameObject Obstacle3;
     public GameObject Collectable;
-    private GameObject ObstaclesObject;
 
     private void Start()
     {
-        ObstaclesObject = GameObject.FindGameObjectWithTag(Tags.Obstacles);
+        Player = GameObject.FindGameObjectWithTag(Tags.Player);
+        ObstaclesObject = GameObject.FindGameObjectWithTag(Tags.Collidables);
         Obstacles.Add(Obstacle1);
         Obstacles.Add(Obstacle2);
         Obstacles.Add(Obstacle3);
@@ -40,7 +44,7 @@ public class SceneController : MonoBehaviour
 
     private void DestroyUnncessaryCollidables()
     {
-        var collidables = GameObject.FindGameObjectsWithTag(Tags.Collidable);
+        var collidables = GetObjectsInLayer(GameObject.FindGameObjectWithTag(Tags.Collidables), Layers.Collidables);
         foreach (var collidable in collidables)
         {
             if (collidable.transform.position.y < ObstacleLowerBound)
@@ -55,15 +59,13 @@ public class SceneController : MonoBehaviour
         var elements = GenerateObstacles().Take(random.Next(0, 3)).ToList();
         elements.AddRange(GenerateCollectables().Take(3 - elements.Count).ToList());
         elements = elements.OrderBy(x => Guid.NewGuid().ToString()).ToList();
-        elements[0].transform.position = new Vector2(LeftLanePositionX, ObstacleGenerationPositionY);
-        elements[1].transform.position = new Vector2(CenterLaneLocationX, ObstacleGenerationPositionY);
-        elements[2].transform.position = new Vector2(RightLaneLocationX, ObstacleGenerationPositionY);
+        elements[0].transform.position = new Vector3(LeftLanePositionX, ObstacleGenerationPositionY, Player.transform.position.z);
+        elements[1].transform.position = new Vector3(CenterLaneLocationX, ObstacleGenerationPositionY, Player.transform.position.z);
+        elements[2].transform.position = new Vector3(RightLaneLocationX, ObstacleGenerationPositionY, Player.transform.position.z);
         elements.ForEach(obj =>
         {
             obj.transform.parent = ObstaclesObject.transform;
-            obj.tag = Tags.Collidable;
             obj.AddComponent<Rigidbody2D>();
-
             var rigidbody = obj.GetComponent<Rigidbody2D>();
             rigidbody.velocity = Vector2.down * CollidablesVelocity;
             rigidbody.gravityScale = 0;
@@ -91,6 +93,17 @@ public class SceneController : MonoBehaviour
 
     private GameObject GetRandomObstacle()
     {
-        return Obstacles[random.Next(0, Obstacles.Count)];
+        var obstacle = Obstacles[random.Next(0, Obstacles.Count)];
+        return obstacle;
+    }
+
+    private static List<GameObject> GetObjectsInLayer(GameObject root, int layer)
+    {
+        var results = root.transform
+            .GetComponentsInChildren(typeof(Transform))
+            .Where(child => child.gameObject.layer == layer)
+            .Select(child => child.gameObject)
+            .ToList();
+        return results;
     }
 }

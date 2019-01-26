@@ -1,4 +1,5 @@
-﻿using Assets.Player;
+﻿using Assets;
+using Assets.Player;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -32,12 +33,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == Tags.Obstacle)
         {
-            //TODO: End Game
-
+            GameManager.Instance.EndGame();
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == Tags.Collectable)
+        {
+            GameManager.Instance.AddScore(1);
+            Destroy(collision.gameObject);
         }
     }
 }

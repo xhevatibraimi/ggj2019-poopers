@@ -7,6 +7,9 @@ TagManager:
   - Obstacles
   - Floor
   - Collidable
+  - Collidables
+  - Collectable
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Collidables
   - 
   - 
   - 
