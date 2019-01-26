@@ -16,6 +16,7 @@ public class SceneController : MonoBehaviour
     public float ObstacleGenerationTimeOffset;
     public float ObstacleGenerationRepeatRate;
     public float ObstacleLowerBound;
+    public float CollidablesVelocity;
 
     public GameObject Obstacle1;
     public GameObject Obstacle2;
@@ -25,7 +26,7 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
-        ObstaclesObject = GameObject.FindGameObjectWithTag(Tags.Floor);
+        ObstaclesObject = GameObject.FindGameObjectWithTag(Tags.Obstacles);
         Obstacles.Add(Obstacle1);
         Obstacles.Add(Obstacle2);
         Obstacles.Add(Obstacle3);
@@ -42,7 +43,7 @@ public class SceneController : MonoBehaviour
         var collidables = GameObject.FindGameObjectsWithTag(Tags.Collidable);
         foreach (var collidable in collidables)
         {
-            if(collidable.transform.position.y < ObstacleLowerBound)
+            if (collidable.transform.position.y < ObstacleLowerBound)
             {
                 Destroy(collidable);
             }
@@ -61,6 +62,14 @@ public class SceneController : MonoBehaviour
         {
             obj.transform.parent = ObstaclesObject.transform;
             obj.tag = Tags.Collidable;
+            obj.AddComponent<Rigidbody2D>();
+
+            var rigidbody = obj.GetComponent<Rigidbody2D>();
+            rigidbody.velocity = Vector2.down * CollidablesVelocity;
+            rigidbody.gravityScale = 0;
+            rigidbody.mass = 0;
+            rigidbody.freezeRotation = true;
+            rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
         });
     }
 
