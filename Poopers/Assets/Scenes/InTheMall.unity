@@ -485,10 +485,10 @@ MonoBehaviour:
   ObstacleLowerBound: -8
   CollidablesVelocity: 5
   NextSceneName: OnTheStreet
-  Obstacle1: {fileID: 1207302899978690, guid: 4529214d6a8c4e44ea8fb6764554502b, type: 2}
-  Obstacle2: {fileID: 1046057161621764, guid: 04e6603ccc91e694598e0510c2bc276d, type: 2}
-  Obstacle3: {fileID: 1668660922153890, guid: 92aa7d0d4ce038a4b9750b48e98da404, type: 2}
-  Collectable: {fileID: 1022508231982382, guid: fbaf00fad84a04a4c9abe97fc346e1e8,
+  Obstacle1: {fileID: 1937025722788808, guid: 96f9323901c991b46893891b4fe37fdd, type: 2}
+  Obstacle2: {fileID: 1069577279132216, guid: 6f1b56154065b9847b4f81fd59910725, type: 2}
+  Obstacle3: {fileID: 1935119990860030, guid: 222cc67173cc8c446813ac0c5ac54974, type: 2}
+  Collectable: {fileID: 1243838772607802, guid: a8bf48188f8334344b5475fa38e9c03a,
     type: 2}
 --- !u!4 &623166050
 Transform:
