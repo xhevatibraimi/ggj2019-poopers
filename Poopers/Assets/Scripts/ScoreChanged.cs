@@ -4,6 +4,6 @@ namespace Assets.Scripts
 {
     public class ScoreChanged : EventArgs
     {
-        public int Score { get; set; }
+        public float Score { get; set; }
     }
 }

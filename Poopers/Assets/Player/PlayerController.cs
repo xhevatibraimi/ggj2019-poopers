@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == Tags.Collectable)
         {
-            GameManager.Instance.AddScore(1);
+            GameManager.Instance.AddScore(0.5f);
             Destroy(collision.gameObject);
         }
     }

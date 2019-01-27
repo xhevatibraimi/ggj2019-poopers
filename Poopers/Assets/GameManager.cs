@@ -18,11 +18,11 @@ namespace Assets
         private static readonly GameManager _instance = new GameManager();
         public static GameManager Instance { get { return _instance; } }
 
-        public int Score { get; set; }
+        public float Score { get; set; }
         public string NextSceneName { get; set; }
         public bool IsDead { get; internal set; }
 
-        public void AddScore(int score)
+        public void AddScore(float score)
         {
             Instance.Score += score;
             if (Instance.Score == 10)

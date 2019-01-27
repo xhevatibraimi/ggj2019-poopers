@@ -391,7 +391,7 @@ MonoBehaviour:
   ObstacleGenerationRepeatRate: 1
   ObstacleLowerBound: -8
   CollidablesVelocity: 12
-  NextSceneName: 
+  NextSceneName: Finish
   Obstacle1: {fileID: 1207302899978690, guid: 4529214d6a8c4e44ea8fb6764554502b, type: 2}
   Obstacle2: {fileID: 1046057161621764, guid: 04e6603ccc91e694598e0510c2bc276d, type: 2}
   Obstacle3: {fileID: 1668660922153890, guid: 92aa7d0d4ce038a4b9750b48e98da404, type: 2}
