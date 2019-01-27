@@ -392,7 +392,7 @@ MonoBehaviour:
   ObstacleLowerBound: -8
   CollidablesVelocity: 12
   NextSceneName: Finish
-  Obstacle1: {fileID: 1935119990860030, guid: 222cc67173cc8c446813ac0c5ac54974, type: 2}
+  Obstacle1: {fileID: 1209557881788314, guid: 2791d10d4c03e5748a19b983f688e050, type: 2}
   Obstacle2: {fileID: 1937025722788808, guid: 96f9323901c991b46893891b4fe37fdd, type: 2}
   Obstacle3: {fileID: 1191389100658066, guid: 6a7ab6797ce5e284e92b8d0ba981b62c, type: 2}
   Collectable: {fileID: 1330837787424944, guid: e5a104ac1c9e252469398ccfd35bc2f8,
