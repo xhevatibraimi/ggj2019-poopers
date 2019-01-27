@@ -25,7 +25,7 @@ namespace Assets
         public void AddScore(float score)
         {
             Instance.Score += score;
-            if (Instance.Score == 10)
+            if (Instance.Score == 15)
             {
                 Instance.Score = 0;
                 Instance.ChangeScene(Instance.NextSceneName);

@@ -1200,8 +1200,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionDelta: 3
-  maleAnimator: {fileID: 9100000, guid: b3f4864c3ab71984581505aad98f29da, type: 2}
-  femaleAnimator: {fileID: 9100000, guid: 77d9d795d02eed94ab0d9b2ff8a34d5a, type: 2}
 --- !u!4 &980910358
 Transform:
   m_ObjectHideFlags: 0
@@ -1539,7 +1537,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1706,7 +1704,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c24d21c219bbae946ab6f219613bed86, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fc687cf3eb1ecf643bfdcf5db267031d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
