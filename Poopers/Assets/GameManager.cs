@@ -8,6 +8,7 @@ namespace Assets
         public EventHandler<ScoreChanged> OnScoreChanged = new System.EventHandler<ScoreChanged>((o, e) => { });
         public EventHandler OnGameOver = new System.EventHandler((o, e) => { });
         public EventHandler OnRestartGame = new EventHandler((o, e) => { });
+        public EventHandler<AudioInfo> OnSound = new EventHandler<AudioInfo>((o, e) => { });
 
         public GameManager()
         {
