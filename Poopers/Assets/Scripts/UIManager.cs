@@ -60,6 +60,7 @@ public class UIManager : MonoBehaviour
 
     private void RestartGame()
     {
+        ClickAudioController.ClickAudio.Play();
         RestartButton.image.sprite = null;
         GameOverText.text = string.Empty;
         RestartButton.image.color = new Color(RestartButton.image.color.r, RestartButton.image.color.g, RestartButton.image.color.b, 0);

@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
 
     private void StartGame()
     {
+        ClickAudioController.ClickAudio.Play();
         PlayerName = NameText.text;
         GetComponent<AudioSource>().Stop();
         SceneManager.LoadScene(Scenes.InTheMall);
