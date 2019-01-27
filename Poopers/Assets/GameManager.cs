@@ -20,6 +20,7 @@ namespace Assets
 
         public int Score { get; set; }
         public string NextSceneName { get; set; }
+        public bool IsDead { get; internal set; }
 
         public void AddScore(int score)
         {
@@ -40,11 +41,13 @@ namespace Assets
         private void OnRestartGameImplementation(object sender, EventArgs e)
         {
             Instance.Score = 0;
+            Instance.IsDead = false;
         }
 
         public void EndGame()
         {
-            Instance.OnGameOver.Invoke(Instance, new System.EventArgs());
+            Instance.OnGameOver.Invoke(Instance, new EventArgs());
+            Instance.IsDead = true;
         }
     }
 }

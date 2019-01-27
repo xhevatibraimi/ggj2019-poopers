@@ -1,6 +1,7 @@
 ﻿using System;
 using Assets;
 using Assets.Player;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -23,17 +24,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public AnimatorController maleAnimator;
+    public AnimatorController femaleAnimator;
+
     void Start()
     {
         GameManager.Instance.OnGameOver += OnGameOver;
         GameManager.Instance.OnRestartGame += OnRestartGame;
         animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController = GameController.IsMale ? maleAnimator : femaleAnimator;
         position = PositionState.Center;
     }
 
     private void OnRestartGame(object sender, EventArgs e)
     {
         animator.SetTrigger("RestartGame");
+        animator.ResetTrigger("GameOver");
     }
 
     private void OnGameOver(object sender, EventArgs e)

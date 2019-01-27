@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource audioSource;
     private bool created = false;
 
     private void Awake()
@@ -25,7 +24,6 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         GameManager.Instance.OnSound += PlaySound;
     }
 

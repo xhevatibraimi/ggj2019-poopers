@@ -11,7 +11,9 @@ public class UIManager : MonoBehaviour
     public Button RestartButton;
     public Sprite RestartButtonSprite;
     public Image YouPoopedImage;
-    static bool created = false;
+    public Text NameText;
+    
+    private static bool created = false;
 
     void Awake()
     {
@@ -28,12 +30,19 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        GameManager.Instance.OnScoreChanged += ChanfgeScore;
+        NameText.text = GameController.PlayerName;
+        GameManager.Instance.OnScoreChanged += ChangeScore;
         GameManager.Instance.OnGameOver += OnGameOver;
         RestartButton.onClick.AddListener(RestartGame);
         RestartButton.image.sprite = RestartButtonSprite;
         RestartButton.image.color = new Color(RestartButton.image.color.r, RestartButton.image.color.g, RestartButton.image.color.b, 0);
         YouPoopedImage.color = new Color(YouPoopedImage.color.r, YouPoopedImage.color.g, YouPoopedImage.color.b, 0);
+    }
+
+    private void Update()
+    {
+        if (GameManager.Instance.IsDead && Input.GetKeyDown(KeyCode.Space))
+            RestartGame();
     }
 
     private void OnGameOver(object sender, EventArgs e)
@@ -44,7 +53,7 @@ public class UIManager : MonoBehaviour
         YouPoopedImage.color = new Color(YouPoopedImage.color.r, YouPoopedImage.color.g, YouPoopedImage.color.b, 255);
     }
 
-    private void ChanfgeScore(object sender, ScoreChanged e)
+    private void ChangeScore(object sender, ScoreChanged e)
     {
         ScoreText.text = e.Score.ToString();
     }

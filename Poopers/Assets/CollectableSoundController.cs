@@ -14,6 +14,7 @@ public class CollectableSoundController : MonoBehaviour
 
     private void OnScoreChanged(object sender, EventArgs e)
     {
-        audioSource.Play();
+        if (!GameManager.Instance.IsDead)
+            audioSource.Play();
     }
 }

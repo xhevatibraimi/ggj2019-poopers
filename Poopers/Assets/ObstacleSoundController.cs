@@ -14,6 +14,7 @@ public class ObstacleSoundController : MonoBehaviour
 
     private void OnGameOver(object sender, EventArgs e)
     {
-        audioSource.Play();
+        if (!GameManager.Instance.IsDead)
+            audioSource.Play();
     }
 }
