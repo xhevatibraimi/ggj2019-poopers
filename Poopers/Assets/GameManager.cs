@@ -22,7 +22,14 @@ namespace Assets
         public void AddScore(int score)
         {
             Instance.Score += score;
+            if (Instance.Score == 10)
+                ChangeScene();
             Instance.OnScoreChanged.Invoke(Instance, new ScoreChanged { Score = Instance.Score });
+        }
+
+        private void ChangeScene()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(Scenes.Home);    
         }
 
         private void OnRestartGameImplementation(object sender, EventArgs e)
