@@ -113,52 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &332284429
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4176240121681104, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176240121681104, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176240121681104, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176240121681104, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176240121681104, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176240121681104, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176240121681104, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176240121681104, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1977153336416538, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 658269bc0200db74bada0e9e89f93494, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +391,7 @@ MonoBehaviour:
   ObstacleGenerationRepeatRate: 1
   ObstacleLowerBound: -8
   CollidablesVelocity: 12
-  NextSceneBuildIndex: 
+  NextSceneName: 
   Obstacle1: {fileID: 1207302899978690, guid: 4529214d6a8c4e44ea8fb6764554502b, type: 2}
   Obstacle2: {fileID: 1046057161621764, guid: 04e6603ccc91e694598e0510c2bc276d, type: 2}
   Obstacle3: {fileID: 1668660922153890, guid: 92aa7d0d4ce038a4b9750b48e98da404, type: 2}
