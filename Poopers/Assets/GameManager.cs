@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
+using UnityEngine;
 
 namespace Assets
 {
     public class GameManager
     {
+        public System.EventHandler<ScoreChanged> ScoreChanged = new System.EventHandler<ScoreChanged>((o, e) => { });
         private static readonly GameManager _instance = new GameManager();
         public static GameManager Instance { get { return _instance; } }
 
@@ -12,7 +14,7 @@ namespace Assets
         public void AddScore(int score)
         {
             Instance.Score += score;
-            Debug.Log("score " + Instance.Score);
+            ScoreChanged.Invoke(Instance, new ScoreChanged { Score = Instance.Score });
         }
 
         public void EndGame()

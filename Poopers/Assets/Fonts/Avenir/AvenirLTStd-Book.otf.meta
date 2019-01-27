@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: f6e7f6167d71e464390178878d8a01cd
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Avenir LT Std
+  fontNames:
+  - Avenir LT Std
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5f4dfb2101078ab4392bd844c7804f75, type: 3}
+  - {fileID: 12800000, guid: 77d1ee716bbd0f945a72b41935784265, type: 3}
+  - {fileID: 12800000, guid: 52e9d3e1b13c0374b936c804d3a294ed, type: 3}
+  - {fileID: 12800000, guid: 5dcc8d9273e06c84faa2671e67da93c0, type: 3}
+  - {fileID: 12800000, guid: 5273b2f246b1f1949a282e0ca03cec5f, type: 3}
+  - {fileID: 12800000, guid: a1a893e4b869f484ca9b39d1b09fa386, type: 3}
+  - {fileID: 12800000, guid: 798da905e8a53db41be77963c0498d91, type: 3}
+  - {fileID: 12800000, guid: e5a60706b84b4b841acc4126f989c915, type: 3}
+  - {fileID: 12800000, guid: a9adf08b547d0364abef2646b6f9f17f, type: 3}
+  - {fileID: 12800000, guid: a8896c8bf0f680849812dded1c3adb73, type: 3}
+  - {fileID: 12800000, guid: 89103ead76ac0ab479cd1e2fce122555, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
