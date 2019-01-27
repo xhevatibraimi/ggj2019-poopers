@@ -22,6 +22,7 @@ public class SceneController : MonoBehaviour
     public float ObstacleGenerationRepeatRate;
     public float ObstacleLowerBound;
     public float CollidablesVelocity;
+    public string NextSceneName;
 
     public GameObject Obstacle1;
     public GameObject Obstacle2;
@@ -30,6 +31,7 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.NextSceneName = NextSceneName;
         GameManager.Instance.OnGameOver += OnGameOver;
         GameManager.Instance.OnRestartGame += OnRestartGame;
         Player = GameObject.FindGameObjectWithTag(Tags.Player);

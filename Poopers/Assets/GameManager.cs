@@ -18,18 +18,22 @@ namespace Assets
         public static GameManager Instance { get { return _instance; } }
 
         public int Score { get; set; }
+        public string NextSceneName { get; set; }
 
         public void AddScore(int score)
         {
             Instance.Score += score;
             if (Instance.Score == 10)
-                ChangeScene();
+            {
+                Instance.Score = 0;
+                Instance.ChangeScene(Instance.NextSceneName);
+            }
             Instance.OnScoreChanged.Invoke(Instance, new ScoreChanged { Score = Instance.Score });
         }
 
-        private void ChangeScene()
+        private void ChangeScene(string nextSceneName)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(Scenes.Home);    
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextSceneName);
         }
 
         private void OnRestartGameImplementation(object sender, EventArgs e)
