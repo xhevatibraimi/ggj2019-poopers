@@ -1,4 +1,5 @@
-﻿using Assets;
+﻿using System;
+using Assets;
 using Assets.Player;
 using UnityEngine;
 
@@ -10,8 +11,20 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        GameManager.Instance.OnGameOver += OnGameOver;
+        GameManager.Instance.OnRestartGame += OnRestartGame;
         animator = GetComponent<Animator>();
         position = PositionState.Center;
+    }
+
+    private void OnRestartGame(object sender, EventArgs e)
+    {
+        animator.SetTrigger("RestartGame");
+    }
+
+    private void OnGameOver(object sender, EventArgs e)
+    {
+        animator.SetTrigger("GameOver");
     }
 
     void Update()

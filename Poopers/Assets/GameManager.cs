@@ -1,11 +1,19 @@
-﻿using Assets.Scripts;
-using UnityEngine;
+﻿using System;
+using Assets.Scripts;
 
 namespace Assets
 {
     public class GameManager
     {
-        public System.EventHandler<ScoreChanged> ScoreChanged = new System.EventHandler<ScoreChanged>((o, e) => { });
+        public EventHandler<ScoreChanged> OnScoreChanged = new System.EventHandler<ScoreChanged>((o, e) => { });
+        public EventHandler OnGameOver = new System.EventHandler((o, e) => { });
+        public EventHandler OnRestartGame = new EventHandler((o, e) => { });
+
+        public GameManager()
+        {
+            OnRestartGame += OnRestartGameImplementation;
+        }
+
         private static readonly GameManager _instance = new GameManager();
         public static GameManager Instance { get { return _instance; } }
 
@@ -14,12 +22,17 @@ namespace Assets
         public void AddScore(int score)
         {
             Instance.Score += score;
-            ScoreChanged.Invoke(Instance, new ScoreChanged { Score = Instance.Score });
+            Instance.OnScoreChanged.Invoke(Instance, new ScoreChanged { Score = Instance.Score });
+        }
+
+        private void OnRestartGameImplementation(object sender, EventArgs e)
+        {
+            Instance.Score = 0;
         }
 
         public void EndGame()
         {
-            Debug.Log("game ended");
+            Instance.OnGameOver.Invoke(Instance, new System.EventArgs());
         }
     }
 }

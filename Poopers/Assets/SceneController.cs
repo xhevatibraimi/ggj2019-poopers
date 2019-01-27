@@ -11,6 +11,7 @@ public class SceneController : MonoBehaviour
     private readonly List<GameObject> Obstacles = new List<GameObject>();
     private GameObject ObstaclesObject;
     private GameObject Player;
+    private bool invokeRepeating = true;
 
     public static GameManager GameManager = new GameManager();
     public float LeftLanePositionX;
@@ -29,12 +30,24 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.OnGameOver += OnGameOver;
+        GameManager.Instance.OnRestartGame += OnRestartGame;
         Player = GameObject.FindGameObjectWithTag(Tags.Player);
         ObstaclesObject = GameObject.FindGameObjectWithTag(Tags.Collidables);
         Obstacles.Add(Obstacle1);
         Obstacles.Add(Obstacle2);
         Obstacles.Add(Obstacle3);
         InvokeRepeating("GenerateCollidables", ObstacleGenerationTimeOffset, ObstacleGenerationRepeatRate);
+    }
+
+    private void OnRestartGame(object sender, EventArgs e)
+    {
+        invokeRepeating = true;
+    }
+
+    private void OnGameOver(object sender, EventArgs e)
+    {
+        invokeRepeating = false;
     }
 
     private void Update()
@@ -56,6 +69,9 @@ public class SceneController : MonoBehaviour
 
     private void GenerateCollidables()
     {
+        if (!invokeRepeating)
+            return;
+
         var elements = GenerateObstacles().Take(random.Next(0, 3)).ToList();
         elements.AddRange(GenerateCollectables().Take(3 - elements.Count).ToList());
         elements = elements.OrderBy(x => Guid.NewGuid().ToString()).ToList();
